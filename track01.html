@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<title>Taller.Hackcode.SurAural</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+	
+	<link rel="stylesheet" href="css/style.css">
+	
+     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+	
+	<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"></script>
+
+		
+	</head>
+	<body>
+		
+
+
+
+<div class="vertical-centered-text" id="home">
+	<div class="col-md-8 cta"><h1>Festival Sur Aural </h1>
+		</div>	
+   
+</div>
+
+
+		<script type="application/processing">
+				 int x1,x2,x3,x4,y1,y2,y3,y4,mostrar,movx1 , movx2 , movy1 , movy2,movx3, movy3, movx4, movy4 , movx5, movy5;
+;
+
+
+void setup(){
+size(1500,600);
+
+px1= width/2;
+py1= height/2;
+px2 = width/4;
+py2= height/4;
+px3= height/2;
+py3 = width/2;
+px4=700;
+py4= 300;
+px5 = 700 ;
+py5 = 200;
+movx1= 3;
+movx2 = 3 ;
+movy1 = 3;
+movy2 = 3;
+movx4= 3;
+movx4 = 3 ;
+movy3 = 3;
+movy3 = 3;
+movx5 = 3;
+movy5 = 3;
+
+}
+
+int px1 , py1 , px2 , py2 , px3, py3,px4, py4,px5, py5, movx1 , movx2 , movy1 , movy2,movx3, movy3, movx4, movy4 , movx5, movy5;
+
+void draw () {
+
+fill ( 0,60);
+rect(-10,-10,width+20,height+20);
+fill(150,80,random(200,255),5);
+stroke(200,px1/2 + 100,255,80);
+strokeWeight(3);
+triangle ( px1, py1,px2,py2, px3,py3);
+triangle ( px1, py1, px2, py2, px4,py4 );
+triangle ( px2, py2 ,px4, py4,px5,py5); 
+px1 = px1 + movx1;
+px2 = px2 + movx2;
+px3 = px3 + movx3;
+px4 = px4 + movx4;
+px5= px5 + movx5;
+py1 = py1 + movy1;
+py2 = py2 + movy2;
+py3 = py3 + movy3;
+py4 = py4 + movy4;
+py5= py5 + movy5;
+
+if ( px1 > 500) {
+  movx1 =-5;
+}
+if ( px2 > 1000) {
+  movx2= -3;
+}
+if ( px3 > 600) {
+  movx3 = -5;
+}
+if ( px4 > 700) {
+  movx4 =- 5;
+}
+if ( px5 > width) {
+  movx5 =- 10;
+}
+if ( py1 > 900) {
+  movy1 = -5;
+}
+if ( py2 > 700) {
+  movy2 = -10;
+}
+  
+if ( py3 > 500) {
+  movy3 = -10;
+}
+if ( py4 > 1000) {
+  movy4 = -10;
+}
+  if ( py5 > height) {
+  movy5 = -10;
+}
+
+
+if ( px1 < 100) {
+  movx1 = 5;
+}
+if ( px2 < 200) {
+  movx2= 3;
+}
+if ( px3 <300) {
+  movx3 = 5;
+}
+if ( px4 <400) {
+  movx4 = 5;
+}
+if ( px5 < 200) {
+  movx5 = 3;
+}
+if ( py1 < 200) {
+  movy1 =5;
+}
+if ( py2 < 300) {
+  movy2 = 3;
+}
+  
+if ( py3 < 200) {
+  movy3 =3;
+}
+if ( py4 < 300) {
+  movy4 = 3;
+}
+  if ( py5 < 100) {
+  movy5 = 3;
+}  
+
+
+
+}
+		</script>
+		<canvas id="sketch" > </canvas>
+		<p id="label"></p>
+
+<div class="vertical-centered-text" id="home">
+	<div class="col-md-8 cta">
+			<h2>Taller HackCode</h2>
+			<h4><a  href="https://www.instagram.com/cerebrini/"> Milx </a> - <a  href="track00code.txt" target="_blank"> ViSitAnte</a></h4>
+<a  href="index.html" class="btn btn-primary orange"> << </a>
+
+<audio id= "audio" src= "https://cdn.glitch.com/41709696-ba2c-4e4a-9c8d-3045b6d1cf35%2FMilxTrackMp.mp3?v=1598914463235" >
+</audio>
+
+  <button class="btn btn-primary orange" onclick="document.getElementById('audio').play()">►</button>
+ 
+  <button class="btn btn-primary orange" onclick="document.getElementById('audio').pause()">■</button>
+
+
+<a  href="track10.html" class="btn btn-primary orange"> >> </a>
+
+
+
+		</div>
+</div>
+
+
+<!-- Codigo que hace que las acciones de botones y cuestiones responsive funcionen-->
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+<script>
+  // A $( document ).ready() block.
+$(document).ready(function() {
+$('.top a').click(function(e){
+        e.preventDefault();
+        var offset = $($(this).attr('href')).offset().top;
+        $('html, body').animate({scrollTop:offset}, 600);
+        return false;
+    });
+
+});
+
+</script>
+
+
+
+	</body>
+</html>

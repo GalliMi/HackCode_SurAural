@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<title>Taller.Hackcode.SurAural</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+	
+	<link rel="stylesheet" href="css/style.css">
+	
+     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+	
+	<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"></script>
+
+		
+	</head>
+	<body>
+		
+
+
+
+<div class="vertical-centered-text" id="home">
+	<div class="col-md-8 cta"><h1>Festival Sur Aural </h1>
+		</div>	
+   
+</div>
+
+
+		<script type="application/processing">
+				 int x1,x2,x3,x4,y1,y2,y3,y4,mostrar,movx1 , movx2 , movy1 , movy2,movx3, movy3, movx4, movy4 , movx5, movy5;
+;
+
+
+void setup(){
+  
+  background (0);
+  size (1500,600);
+  mostrar = 0;
+ 
+  x1=int (random(width));
+  x2=int (random(width));
+  x3=int (random(width));
+  x4=int (random(width));
+  y1=int (random(height));
+  y2=int (random(height));
+  y3=int (random(height));
+  y4=int (random(height));
+ 
+   movx1= 5;
+movx2 = 5 ;
+movy1 = 5;
+movy2 = 5;
+movx4= 5;
+movx4 = 5 ;
+movy3 = 5;
+movy3 = 5;
+movx5 = 5;
+movy4 = 5;
+   
+}
+
+void draw(){
+  
+stroke(random(100,120),random(255),random(100,255),50);
+
+//stroke(random(78,200),100,random(210,255),50);
+
+noFill();
+bezier(x1, y1, x2, y2, x3, y3, x4, y4);
+
+x1 = x1 + movx1;
+x3 = x3 + movx3;
+x4 = x4 + movx4;
+y1 = y1 + movy1;
+
+y3 = y3 + movy3;
+y4 = y4 + movy4;
+
+if ( x1 > 1500) {
+  movx1 =-5;
+}
+if ( x2 > 1900) {
+  movx2= -5;
+}
+if (x3 > 1000) {
+  movx3 = -5;
+}
+if ( x4 > 1800) {
+  movx4 =- 5;
+}
+
+if ( y1 > 1050) {
+  movy1 = -10;
+}
+if ( y2 > 1850) {
+  movy2 = -10;
+}
+  
+if ( y3 > 800) {
+  movy3 = -10;
+}
+if ( y4 > 1200) {
+  movy4 = -10;
+}
+ 
+
+
+if ( x1 < -50) {
+  movx1 = 5;
+}
+
+if ( x3 <80) {
+  movx3 = 5;
+}
+if ( x4 <400) {
+  movx4 = 5;
+}
+
+
+if ( y1 < 200) {
+  movy1 =5;
+}
+
+  
+if ( y3 < 0) {
+  movy3 =5;
+}
+if ( y4 < -500) {
+  movy4 = 5;
+}
+ 
+
+}
+		</script>
+		<canvas id="sketch" > </canvas>
+		<p id="label"></p>
+
+<div class="vertical-centered-text" id="home">
+	<div class="col-md-8 cta">
+			<h2>Taller HackCode</h2>
+			<h4><a  href="https://www.instagram.com/camilacijka/"> Cijka </a> - <a  href="track00code.txt" target="_blank"> Reserva Del Valle</a></h4>
+<a  href="track10.html" class="btn btn-primary orange"> << </a>
+
+<audio id= "audio" src="https://cdn.glitch.com/41709696-ba2c-4e4a-9c8d-3045b6d1cf35%2F05Cijka.mp3?v=1599279244870" >
+</audio>
+
+  <button class="btn btn-primary orange" onclick="document.getElementById('audio').play()">►</button>
+ 
+  <button class="btn btn-primary orange" onclick="document.getElementById('audio').pause()">■</button>
+
+
+<a  href="track01.html" class="btn btn-primary orange"> >> </a>
+
+		</div>
+</div>
+
+
+<!-- Codigo que hace que las acciones de botones y cuestiones responsive funcionen-->
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+<script>
+  // A $( document ).ready() block.
+$(document).ready(function() {
+$('.top a').click(function(e){
+        e.preventDefault();
+        var offset = $($(this).attr('href')).offset().top;
+        $('html, body').animate({scrollTop:offset}, 600);
+        return false;
+    });
+
+});
+
+</script>
+
+
+
+	</body>
+</html>

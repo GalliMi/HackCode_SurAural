@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<title>Taller.Hackcode.SurAural</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+	
+	<link rel="stylesheet" href="css/style.css">
+	
+     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+	
+	<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"></script>
+
+		
+	</head>
+	<body>
+
+<div class="vertical-centered-text" id="home">
+	<p>
+p = ProxySpace.push(s.boot);
+
+
+c = Buffer.read(s, "C:/Users/mili/Documents/sounds/pajarito.wav");
+d = Buffer.read(s, "C:/Users/mili/Documents/sounds/owl.wav");
+e = Buffer.read(s, "C:/Users/mili/Documents/sounds/Frogs.wav");
+f = Buffer.read(s, "C:/Users/mili/Documents/sounds/murciegalo.wav");
+g = Buffer.read(s, "C:/Users/mili/Documents/sounds/thunder.wav");
+
+~out = ~buffer
+~out.free
+
+
+
+p.makeTempoClock(200/120);
+p.quant = 4;
+
+p.fadeTime = 3;
+
+//___________________arpegios,escalas,notas ___________________
+
+~bocina = {(RHPF.ar(PinkNoise.ar(0.4),[60,70,67].midicps.choose,1))*Decay.kr(Demand.kr(Impulse.kr(2),0,Dseq([1,0,2,0,1],inf))*Impulse.kr(1),0.04)*3}
+
+~bocina.play
+~bocina.free
+
+
+~arpegio = { Pan2.ar(SinOsc.ar(~seqArpegio,0,0.7))};
+~arpegio.play
+
+~fiaum2 = {(40)*Decay.kr( Demand.kr(Impulse.kr(2),0,Dseq([60,64,67,68].midicps,inf))*Impulse.kr(2),0.5) }
+~fiaum0 = {(20)*Decay.kr( Demand.kr(Impulse.kr(4),0,Dseq([60,60,67,68,70].midicps,inf))*Impulse.kr(1),0.9) }
+~fiaum1 = {(20)*Decay.kr( Demand.kr(Impulse.kr(4),0,Dseq([60,60,67,68,70].midicps,inf))*Impulse.kr(4),0.6) }
+~fiaum3 = {(10)*Decay.kr( Demand.kr(Impulse.kr(4),0,Dseq([60,60,67,68,70].midicps,inf))*Impulse.kr(4),0.6) }
+
+
+~espacial0 = { Pan2.ar(SinOsc.ar(~fiaum0,0,0.7))};
+~espacial0.play
+~espacial0.free
+
+~espacial1 = { Pan2.ar(SinOsc.ar(~fiaum2,0,0.7))};
+~espacial1.play
+~espacial1.free
+
+~espacial2 = { Pan2.ar(SinOsc.ar(~fiaum3,0,0.7))};
+~espacial2.play
+~espacial2.free
+
+~wang0 = {LFTri.ar(1,0,1)*LPF.ar(SinOsc.ar(100,0.1,1),1000)}
+~wang1 = {LFTri.ar(1,0,1)*LPF.ar(SinOsc.ar(300,0.1,1),1000)}
+
+~wang0.play
+~wang0.free
+
+~wang1.play
+~wang1.free
+
+~nota0={ Pan2.ar(SinOsc.ar([60,64,67].midicps,0,0.5))};
+~nota1={Pan2.ar(SinOsc.ar([60,64,67,72].midicps.choose),[0.1,0.5].choose)};
+~nota2={Pan2.ar(SinOsc.ar([60,64,67,72].choose),[0.1,0.5].choose)};
+
+~nota0.play
+~nota0.free
+
+~nota1.play
+~nota1.free
+
+~nota2.play
+~nota2.free
+
+~ruidos = {SinOsc.ar(2500, 0, 0.2)+WhiteNoise.ar(0.5)!2}
+~ruidos = {[LPF,HPF].choose.ar(BrownNoise.ar,10)}
+~ruidos = {LPF.ar(WhiteNoise.ar(0.9),MouseY.kr(1000,100))}
+
+~ruidos.play
+~ruidos.free
+
+~laka = {SinOsc.ar(MouseX.kr(800,50),0,MouseY.kr(0,2))}
+~laka.play
+~laka.free
+
+
+//________________sonidos random ___________________
+
+
+~bardo = {LFTri.ar(1,0,1)*LPF.ar(WhiteNoise.ar(30,0.1,1),1000)}
+~bardo = {LFTri.ar(1,0,0.5)*LPF.ar(BrownNoise.ar(80,0.1,1),500)}
+~bardo = {LFTri.ar(1,0,0.7)*LPF.ar(PinkNoise.ar(80,0.1,1),40)}
+
+~bardo.play
+~bardo.free
+
+~chikipip0 ={LFTri.ar (1000,0.1,0.5)*Decay.kr(Demand.kr(Impulse.kr(5),0,Dseq([1,0,0,1,0,1,0,2],inf))*Impulse.kr(4),0.09)*3};
+~chikipip1 ={LFTri.ar ([800,100],0.1,0.5)*Decay.kr(Demand.kr(Impulse.kr(9),0,Dseq([1,0,1,2,1,0,3],inf))*Impulse.kr(9),0.09)*3};
+
+~chikipips = ~chikipip0 + ~chikipip1;
+
+~chikipips.play
+~chikipips.free
+
+~chikipip0.play
+~chikipip0.free
+
+~pajaretos.play
+~pajaretos.free
+
+~buho.play
+~buho.free
+
+~rana.play
+~rana.free
+
+~murciegalo.play
+~murciegalo.free
+
+~trueno.play
+~trueno.free
+
+~pajaretos = {Pan2.ar(PlayBuf.ar(2, c, BufRateScale.kr(c)* 1,Impulse.kr(~tempo*(Demand.kr(Impulse.kr(~tempo),0,Dseq([0.5],inf)))), BufFrames.kr(c)*(Demand.kr(Impulse.kr(~tempo),0,Dseq([0.01],inf))),1)).flat * 1};
+
+~buho = {Pan2.ar(PlayBuf.ar(2, d, BufRateScale.kr(d)* 1,Impulse.kr(~tempo*(Demand.kr(Impulse.kr(~tempo),0,Dseq([0.5],inf)))), BufFrames.kr(d)*(Demand.kr(Impulse.kr(~tempo),0,Dseq([0.01],inf))),1)).flat * 1};
+
+~rana = {Pan2.ar(PlayBuf.ar(2, e, BufRateScale.kr(e)* 1,Impulse.kr(~tempo*(Demand.kr(Impulse.kr(~tempo),0,Dseq([0.5],inf)))), BufFrames.kr(e)*(Demand.kr(Impulse.kr(~tempo*12),0,Dseq([0.01],inf))),1)).flat * 1};
+
+~murciegalo= {Pan2.ar(PlayBuf.ar(2, f, BufRateScale.kr(f)* 1,Impulse.kr(~tempo*(Demand.kr(Impulse.kr(~tempo),0,Dseq([0.5],inf)))), BufFrames.kr(f)*(Demand.kr(Impulse.kr(~tempo*12),0,Dseq([0.01],inf))),1)).flat * 1};
+
+~trueno= {Pan2.ar(PlayBuf.ar(2, g, BufRateScale.kr(g)* 1,Impulse.kr(~tempo*(Demand.kr(Impulse.kr(~tempo),0,Dseq([0.5],inf)))), BufFrames.kr(g)*(Demand.kr(Impulse.kr(~tempo),0,Dseq([0.01],inf))),1)).flat * 1};
+
+
+
+//___________________ bajos ___________________
+~seqBajo = { (0.3)*Demand.kr(Impulse.kr(5),0,Dseq([60,60,67,67,64,60,0,60,60,60,0,67,64,60,0,60].midicps,inf)) }
+
+~bajo= { Pan2.ar(SinOsc.ar(~seqBajo,0,0.2))};
+~bajo.play
+~bajo.free
+
+~seqBajo2 = { (0.3)*Demand.kr(Impulse.kr(5),0,Dseq([50,60,67,67,64,60,0,60,60,60,0,67,64,60,0,50].midicps,inf)) }
+
+~bajo2= { Pan2.ar(SinOsc.ar(~seqBajo2,0,0.2))};
+~bajo2.play
+~bajo2.free
+
+
+~seqBajo3 = { (0.3)*Demand.kr(Impulse.kr(5),0,Dseq([60,60,67,67,64,60,0,0,60,0,0].midicps,inf)) }
+
+~bajo3= { Pan2.ar(SinOsc.ar(~seqBajo3,0,0.2))};
+~bajo3.play
+~bajo3.free
+
+
+//___________________percus ___________________
+
+
+~primerKick = { Pan2.ar(SinOsc.ar(80)*Decay.kr(Demand.kr(Impulse.kr(6),0,Dseq([0,0,1,1],inf))*Impulse.kr(2),0.9))};
+
+~primerKick.play
+~primerKick.free
+
+~kiki={Pan2.ar(SinOsc.ar(80)*Decay.kr(Demand.kr(Impulse.kr(5),0,Dseq([0,1,0,0,0,0,0],inf))*Impulse.kr(5),0.4))};
+~shk={Pan2.ar(WhiteNoise.ar(0.3)*Decay.kr(Demand.kr(Impulse.kr(5),0,Dseq([0,0,0,0,0,0,1,0.5],inf))*Impulse.kr(5),0.4))};
+
+
+~to2 = ~shk + ~kiki ;
+~to2.play
+~to2.free
+
+~otro={Pan2.ar(SinOsc.ar(500)*Decay.kr(Demand.kr(Impulse.kr(5),0,Dseq([0,0,0,0,0,0,1,1],inf))*Impulse.kr(5),0.4))};
+~otroz={Pan2.ar(SinOsc.ar(300)*Decay.kr(Demand.kr(Impulse.kr(5),0,Dseq([0,0,0,0,0,1,0,1],inf))*Impulse.kr(5),0.8))};
+~kikiz={Pan2.ar(SinOsc.ar(100)*Decay.kr(Demand.kr(Impulse.kr(5),0,Dseq([0,1,0,0,0,0,0],inf))*Impulse.kr(5),0.9))};
+~otror={Pan2.ar(SinOsc.ar(20)*Decay.kr(Demand.kr(Impulse.kr(5),0,Dseq([60,60].midicps,inf))*Impulse.kr(5),0.2))};
+~otror={Pan2.ar(SinOsc.ar(60)*Decay.kr(Demand.kr(Impulse.kr(5),0,Dseq([60,60].midicps,inf))*Impulse.kr(5),0.2))};
+
+~to2 = ~kikiz+ ~otroz+ ~otro;
+
+~to2 = ~kikiz+ ~otroz+ ~otror;
+
+~kikiz.play
+~otroz.play
+~otro.play
+~otro.free
+~otror.play
+~otror.free
+
+~kiki={Pan2.ar(SinOsc.ar(80)*Decay.kr(Demand.kr(Impulse.kr(5),0,Dseq([0,1,0,0,0,0,0],inf))*Impulse.kr(5),0.4))};
+~shk={Pan2.ar(WhiteNoise.ar(0.3)*Decay.kr(Demand.kr(Impulse.kr(5),0,Dseq([0,0,0,0,0,0,1,0.5],inf))*Impulse.kr(5),0.4))};
+~otror={Pan2.ar(SinOsc.ar(30)*Decay.kr(Demand.kr(Impulse.kr(5),0,Dseq([0,0,0,0,0,0,1,1],inf))*Impulse.kr(5),0.4))};
+
+
+~pruebads = {WhiteNoise.ar(0.5)*Decay.kr(Demand.kr(Impulse.kr(2),0,Dseq([0,0,0,0,0,0,1,1],inf))*Impulse.kr(2),0.8)*4};
+~pruebads.play
+~pruebads.free
+
+~pruebads = {BrownNoise.ar(0.3)*Decay.kr(Demand.kr(Impulse.kr(8),0,Dseq([1,0.6,1,0.5,0.5,0.8],inf))*Impulse.kr(8),0.5)*2};
+~pruebads = {BrownNoise.ar(0.5)*Decay.kr(Demand.kr(Impulse.kr(8),0,Dseq([1,1,1,1,1,0.8],inf))*Impulse.kr(3),0.8)*2};
+~pruebads = {BrownNoise.ar(0.6)*Decay.kr(Demand.kr(Impulse.kr(4),0,Dseq([1,1,1,1,1,1],inf))*Impulse.kr(4),0.7)*2};
+
+
+~kickLow = { Pan2.ar(SinOsc.ar(80)*Decay.kr(Demand.kr(Impulse.kr(8),0,Dseq([1,1,0,1],inf))*Impulse.kr(8),0.9))};
+~kickLow.play
+~kickLow.free
+
+~kickBajo={Pan2.ar(SinOsc.ar(100)*Decay.kr(Demand.kr(Impulse.kr(6),0,Dseq([1,1,1,1,1,1,1,1,1],inf))*Impulse.kr(4),0.9))};
+~kickBajo.play
+~kickBajo.free
+
+
+~chillbit.free
+~chillbit.play
+
+(
+~chillbit = ~kick + ~hh;
+
+~hh = {WhiteNoise.ar(0.3)*Decay.kr(Demand.kr(Impulse.kr(2),0,Dseq([0,0,0,1],inf))*Impulse.kr(2),0.09)*2};
+
+~kick = { Pan2.ar(SinOsc.ar(90)*Decay.kr(Demand.kr(Impulse.kr(6),0,Dseq([1,0,0,1],inf))*Impulse.kr(2),0.2))};
+
+)
+
+	</p>
+		
+   
+</div>
+
+
+
+	</body>
+</html>		
